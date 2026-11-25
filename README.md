@@ -17,7 +17,11 @@ Feito em **Flutter** que faz gerenciamento de tarefas, usando **Firebase Authent
 
 ## Vídeo MVP
 
-Não consegui subir aqui por causa do tamanho
+
+https://github.com/user-attachments/assets/a78eab9c-e4d9-40a9-ac96-e801360619ce
+
+
+https://github.com/user-attachments/assets/c6138a30-5ba2-4f46-962c-b8d62d7b5f94
 
 
 ## Capturas de tela
