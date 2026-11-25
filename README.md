@@ -1,3 +1,5 @@
+
+
 # App Gerenciador de Tarefas
 
 Feito em **Flutter** que faz gerenciamento de tarefas, usando **Firebase Authentication** e **Firebase Realtime Database**. 
@@ -15,9 +17,7 @@ Feito em **Flutter** que faz gerenciamento de tarefas, usando **Firebase Authent
 
 ## Vídeo MVP
 
-docs\screenshots\2026-11-25 02-56-59.mp4
-
-docs\screenshots\2026-11-25 03-03-53.mp4
+Não consegui subir aqui por causa do tamanho
 
 
 ## Capturas de tela
