@@ -1,24 +1,39 @@
-# Gerenciador de Tarefas - P2 Programação Mobile
+# App Gerenciador de Tarefas
 
-Aplicativo mobile feito em **Flutter** para gerenciamento de tarefas pessoais, usando **Firebase Authentication** (login por e-mail e senha) e **Firebase Realtime Database** para guardar as tarefas na nuvem. Cada usuário vê e altera somente as suas próprias tarefas.
-
-## Vídeo de demonstração
-
-
-
+Feito em **Flutter** que faz gerenciamento de tarefas, usando **Firebase Authentication** e **Firebase Realtime Database**. 
 
 ## Funcionalidades
 
-- Cadastro de usuário (nome, e-mail e senha), login e logout
-- Validação dos campos e mensagens de erro de autenticação em português
-- Sessão mantida ao fechar e abrir o app (gerenciada pelo Firebase)
-- Tela inicial com o nome do usuário e a quantidade de tarefas cadastradas, pendentes e concluídas
-- Menu lateral (Drawer) com Início, Minhas tarefas, Configurações, Sobre o aplicativo e Sair, mostrando nome e e-mail do usuário
-- Cadastro de tarefas com título, descrição, data de vencimento, prioridade (Baixa, Média, Alta) e situação (Pendente, Concluída)
-- Listagem em `ListView` com cores/ícones por prioridade e filtro (Todas, Pendentes, Concluídas)
-- Tela de detalhes da tarefa, edição, exclusão e alteração de situação (pendente ⇄ concluída)
-- Atualização em tempo real usando listeners do Realtime Database (`onValue`)
-- Tema claro e escuro salvo com `SharedPreferences` e carregado ao abrir o app
+- Autenticação e controle de acesso: Cadastro de usuário, login e logout
+- Painel inicial (Dashboard):Gaveta de navegação contendo os dados do perfil (nome e e-mail) e atalhos para as telas de Início, Minhas Tarefas, Configurações, Sobre o App e encerramento de sessão.
+- Navegação por menu lateral (Drawer): com Início, Minhas tarefas, Configurações, Sobre o aplicativo e Sair, mostrando nome e e-mail do usuário
+- Registro de novas atividades: Cadastro de tarefas com título, descrição, data de vencimento, prioridade (Baixa, Média, Alta) e situação (Pendente, Concluída)
+- Visualização e filtragem: Listagem em ListView com cores/ícones por prioridade e filtro (Todas, Pendentes, Concluídas)
+- Gerenciamento individual de tarefas: Tela de detalhes da tarefa, edição, exclusão e alteração de situação
+- Sincronização instantânea: Atualização em tempo real usando listeners do Realtime Database 
+- Personalização visual: Tema claro e escuro salvo com SharedPreferences e carregado ao abrir o app
+
+## Vídeo MVP
+
+docs\screenshots\2026-11-25 02-56-59.mp4
+
+docs\screenshots\2026-11-25 03-03-53.mp4
+
+
+## Capturas de tela
+
+| Login | Cadastro | Início |
+| --- | --- | --- |
+| ![Login](docs\screenshots\login.png) | ![Cadastro](docs\screenshots\cadastro.png) | ![Início](docs\screenshots\login.png) |
+
+| Minhas tarefas | Nova tarefa | Detalhes |
+| --- | --- | --- |
+| ![Minhas tarefas](docs\screenshots\tarefas.png) | ![Nova tarefa](docs\screenshots\novaTarefa.png) | ![Detalhes](docs\screenshots\detalhes.png) |
+
+| Tema escuro | Realtime Database |
+| --- | --- |
+| ![Tema escuro](docs\screenshots\tema.png) | ![Realtime Database](docs\screenshots\database.png) |
+
 
 ## Tecnologias
 
@@ -31,7 +46,28 @@ Aplicativo mobile feito em **Flutter** para gerenciamento de tarefas pessoais, u
 | Firebase Realtime Database | Persistência das tarefas |
 | SharedPreferences | Preferência de tema |
 | ThemeData / ThemeMode | Temas claro e escuro |
-| Models | Classes `Usuario` e `Tarefa` |
+| Models | Classes Usuario e Tarefa |
+
+
+## Estrutura dos dados no Realtime Database
+
+
+```
+usuarios/
+  {uid}/
+    nome: "Maria"
+    email: "maria@email.com"
+tarefas/
+  {uid}/
+    {idTarefa}/
+      titulo: "Estudar Flutter"
+      descricao: "Revisar Firebase"
+      dataVencimento: 1764547200000
+      prioridade: "Alta"
+      concluida: false
+```
+
+As tarefas ficam dentro do `uid` do usuário logado, e as regras do banco (`database.rules.json`) só deixam cada usuário ler e escrever no próprio nó.
 
 ## Estrutura do projeto
 
@@ -59,26 +95,6 @@ lib/
  └── themes/
      └── app_theme.dart
 ```
-
-## Estrutura dos dados no Realtime Database
-
-
-```
-usuarios/
-  {uid}/
-    nome: "Maria"
-    email: "maria@email.com"
-tarefas/
-  {uid}/
-    {idTarefa}/
-      titulo: "Estudar Flutter"
-      descricao: "Revisar Firebase"
-      dataVencimento: 1764547200000
-      prioridade: "Alta"
-      concluida: false
-```
-
-As tarefas ficam dentro do `uid` do usuário logado, e as regras do banco (`database.rules.json`) só deixam cada usuário ler e escrever no próprio nó.
 
 ## Como configurar o Firebase
 
@@ -114,17 +130,3 @@ Para rodar os testes dos models:
 ```bash
 flutter test
 ```
-
-## Capturas de tela
-
-| Login | Cadastro | Início |
-| --- | --- | --- |
-| ![Login]() | ![Cadastro]() | ![Início]() |
-
-| Minhas tarefas | Nova tarefa | Detalhes |
-| --- | --- | --- |
-| ![Minhas tarefas]() | ![Nova tarefa]() | ![Detalhes]() |
-
-| Tema escuro | Realtime Database |
-| --- | --- |
-| ![Tema escuro]() | ![Realtime Database]() |
